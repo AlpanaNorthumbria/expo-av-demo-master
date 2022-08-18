@@ -3,6 +3,9 @@ import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { Audio } from 'expo-av';
 //import * as Sharing from 'expo-sharing';
+import { DataStore } from '@aws-amplify/datastore';
+import { PatientModel } from './models';
+
 
 export default function App() {
   const [recording, setRecording] = React.useState();
@@ -79,6 +82,18 @@ export default function App() {
   );
 }
 
+await DataStore.save(
+  new PatientModel({
+  "Name": "Lorem ipsum dolor sit amet",
+  "Age": "Lorem ipsum dolor sit amet",
+  "Location": "Lorem ipsum dolor sit amet",
+  "PatientId": "Lorem ipsum dolor sit amet",
+  "RecordingDate": "1970-01-01Z",
+  "RecordingTime": "12:30:23.999Z",
+  "Audio": "" /* Provide init commands */
+})
+);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -98,4 +113,9 @@ const styles = StyleSheet.create({
   button: {
     margin: 16
   }
-});
+
+  
+}
+
+);
+
